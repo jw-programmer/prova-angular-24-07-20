@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
-import { CepService } from './cep.service';
+import { CepService } from './services/cep.service';
 
 @NgModule({
 	declarations: [

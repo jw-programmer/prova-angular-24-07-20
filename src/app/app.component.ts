@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { CepService } from './cep.service';
+import { CepService } from './services/cep.service';
+import { Title } from '@angular/platform-browser';
+import { title } from 'process';
 
 @Component({
 	selector: 'app-root',
@@ -83,11 +85,13 @@ export class AppComponent {
 	}
 
 	ngOnInit() {
+		this.titleService.setTitle(title)
 		if (!get() || !JSON.parse(get()).length) populateTable()
 		this.persons = JSON.parse(get())
 	}
 
-	constructor(public cep: CepService) { }
+	constructor(public cep: CepService,
+		private titleService: Title) { }
 }
 
 function populateTable() {
