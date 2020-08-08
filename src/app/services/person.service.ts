@@ -11,7 +11,7 @@ export class PersonService {
 
   constructor(private store: StoreService) {
     this.persons = store.getAllStore();
-  }
+  } 
 
   savePersons() {
     this.store.setAllStore(this.persons);

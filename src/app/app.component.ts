@@ -13,23 +13,10 @@ import { Person } from './models/person.dto';
 })
 export class AppComponent {
 	title = 'teste-helpper'
-
-	persons = [
-		{
-			name: 'Teste',
-			cpf: 'Teste',
-			phone: 'Teste',
-			email: 'Teste',
-			cep: 'Teste',
-			state: 'Teste',
-			city: 'Teste',
-			street: 'Teste',
-		}
-	]
 	columns = ['name', 'cpf', 'phone', 'email', 'cep', 'state', 'city', 'street', 'actions']
 	selectedPerson: any
+	deletingPerson: boolean = false;
 	loading: boolean
-	newPerson: boolean
 	personFormGroup: FormGroup
 
 	constructor(public cep: CepService,
@@ -65,7 +52,9 @@ export class AppComponent {
 	}
 
 	deletePerson(person) {
+		this.deletingPerson = true
 		this.personsService.removePerson(person);
+		this.deletingPerson = false
 	}
 
 	changeCep(event) {
