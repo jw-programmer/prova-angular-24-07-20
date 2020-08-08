@@ -1,6 +1,6 @@
 <div class="main-wrapper">
 	<button class="add-person" (click)="addPerson()" *ngIf="!selectedPerson">Incluir uma nova pessoa</button>
-	<table mat-table [dataSource]="personsService.persons" *ngIf="!selectedPerson">
+	<table mat-table [dataSource]="personsService.persons" *ngIf="!selectedPerson && !deletingPerson">
 		<tr mat-header-row *matHeaderRowDef="columns"></tr>
 		<tr mat-row *matRowDef="let myRowData; columns: columns"></tr>
 		<ng-container matColumnDef="name">
@@ -47,7 +47,7 @@
 	<div class="loading" *ngIf="loading">Aguarde...</div>
 
 	<div class="form" *ngIf="selectedPerson">
-		<form  [formGroup]="personFormGroup" (ngSubmit)="submit(selectedPerson); $event.preventDefault()">
+		<form [formGroup]="personFormGroup" (ngSubmit)="submit(selectedPerson); $event.preventDefault()">
 			<mat-form-field>
 				<mat-label>Nome</mat-label>
 				<input matInput formControlName="name" name="name" required>
