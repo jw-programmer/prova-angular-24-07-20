@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CepService } from './services/cep.service';
 
 @NgModule({
@@ -17,6 +17,7 @@ import { CepService } from './services/cep.service';
 		BrowserModule,
 		BrowserAnimationsModule,
 		FormsModule,
+		ReactiveFormsModule,
 		MatTableModule,
 		MatInputModule,
 		HttpClientModule,
