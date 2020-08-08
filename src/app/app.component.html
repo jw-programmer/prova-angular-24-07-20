@@ -1,6 +1,6 @@
 <div class="main-wrapper">
 	<button class="add-person" (click)="addPerson()" *ngIf="!selectedPerson">Incluir uma nova pessoa</button>
-	<table mat-table [dataSource]="persons" *ngIf="!selectedPerson">
+	<table mat-table [dataSource]="personsService.persons" *ngIf="!selectedPerson && !deletingPerson">
 		<tr mat-header-row *matHeaderRowDef="columns"></tr>
 		<tr mat-row *matRowDef="let myRowData; columns: columns"></tr>
 		<ng-container matColumnDef="name">
@@ -47,38 +47,38 @@
 	<div class="loading" *ngIf="loading">Aguarde...</div>
 
 	<div class="form" *ngIf="selectedPerson">
-		<form (ngSubmit)="submit(selectedPerson)">
+		<form [formGroup]="personFormGroup" (ngSubmit)="submit(selectedPerson); $event.preventDefault()">
 			<mat-form-field>
 				<mat-label>Nome</mat-label>
-				<input matInput [(ngModel)]="selectedPerson.name" name="name" required>
+				<input matInput formControlName="name" name="name" required>
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>CPF</mat-label>
-				<input type="number" maxlength="11" matInput [(ngModel)]="selectedPerson.cpf" name="cpf" required>
+				<input type="number" maxlength="11" matInput formControlName="cpf" name="cpf" required>
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Telefone</mat-label>
-				<input type="number" matInput [(ngModel)]="selectedPerson.phone" name="phone" required>
+				<input type="number" matInput formControlName="phone" name="phone" required>
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>Email</mat-label>
-				<input matInput type="email" [(ngModel)]="selectedPerson.email" name="email" required>
+				<input matInput type="email" formControlName="email" name="email" required>
 			</mat-form-field>
 			<mat-form-field>
 				<mat-label>CEP</mat-label>
-				<input type="number" matInput [(ngModel)]="selectedPerson.cep" name="cep" (keyup)="changeCep($event)" required>
+				<input type="number" matInput formControlName="cep" name="cep" (keyup)="changeCep($event)" required>
 			</mat-form-field>
 			<mat-form-field class="readonly">
 				<mat-label>Estado</mat-label>
-				<input matInput readonly [(ngModel)]="selectedPerson.state" name="state" required>
+				<input matInput readonly formControlName="state" name="state" required>
 			</mat-form-field>
 			<mat-form-field class="readonly">
 				<mat-label>Cidade</mat-label>
-				<input matInput readonly [(ngModel)]="selectedPerson.city" name="city" required>
+				<input matInput readonly formControlName="city" name="city" required>
 			</mat-form-field>
 			<mat-form-field class="readonly">
 				<mat-label>Rua</mat-label>
-				<input matInput readonly [(ngModel)]="selectedPerson.street" name="street" required>
+				<input matInput readonly formControlName="street" name="street" required>
 			</mat-form-field>
 			<div id="buttons">
 				<button type="button" (click)="cancel()">Cancelar</button>
