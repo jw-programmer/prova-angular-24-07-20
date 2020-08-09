@@ -1,14 +1,11 @@
 # Prova de Angular
 
-Trata-se de um teste bem simples, onde temos um CRUD de usuários e queremos vê-lo funcional, organizado e com testes
+## Desenvolvedor
 
-## O que será avaliado?
+Josias Wando Nobre de Queiroz
 
-1. Qualidade do seu código
-2. Boas práticas utilizadas
-3. Conceitos de DRY
-4. Prazo
+## Descrição
 
-## Como será feita a entrega?
+Crud de usuários feito em angular. O código foi refatorado a partir de outro projeto, com boas práticas e menos acoplamento de código. 
 
-Deverá ser realizado um fork deste repositório e no formulário enviado você deverá responder com o link deste fork.
+
