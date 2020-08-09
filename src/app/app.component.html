@@ -1,6 +1,6 @@
 <div class="main-wrapper">
 	<button class="add-person" (click)="addPerson()" *ngIf="!selectedPerson">Incluir uma nova pessoa</button>
-	<table mat-table [dataSource]="personsService.persons" *ngIf="!selectedPerson && !deletingPerson">
+	<table mat-table [dataSource]="personsService.persons" *ngIf="!selectedPerson">
 		<tr mat-header-row *matHeaderRowDef="columns"></tr>
 		<tr mat-row *matRowDef="let myRowData; columns: columns"></tr>
 		<ng-container matColumnDef="name">

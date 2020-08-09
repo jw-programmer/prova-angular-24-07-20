@@ -15,7 +15,6 @@ export class AppComponent {
 	title = 'teste-helpper'
 	columns = ['name', 'cpf', 'phone', 'email', 'cep', 'state', 'city', 'street', 'actions']
 	selectedPerson: any
-	deletingPerson: boolean = false;
 	loading: boolean
 	personFormGroup: FormGroup
 
@@ -52,9 +51,8 @@ export class AppComponent {
 	}
 
 	deletePerson(person) {
-		this.deletingPerson = true
 		this.personsService.removePerson(person);
-		this.deletingPerson = false
+		window.location.reload()
 	}
 
 	changeCep(event) {
@@ -90,7 +88,7 @@ export class AppComponent {
 		if (this.personFormGroup.invalid) {
 			alert('Erro! Preencha todos os campos!')
 		} else {
-			// Caso a pessoa não extesa ediantando. O CPF não será encontrado e o novo usuário sera adicionado automaticamente.
+			// Caso a pessoa crie deseje criar. O CPF não será encontrado e o novo usuário sera adicionado automaticamente.
 			this.personsService.updatePerson(this.personFormGroup.value)
 		}
 		this.cancel()
