@@ -12,7 +12,7 @@ export class StoreService {
   getAllStore(): Person[] {
     let urs = localStorage.getItem(STORAGE_KEYS.persons)
     if (urs == null) {
-      return null
+      return []
     } else {
       return JSON.parse(urs)
     }
